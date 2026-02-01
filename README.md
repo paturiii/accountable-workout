@@ -1,36 +1,94 @@
-# 💪 Accountable Workout
+# 🏋️‍♂️ Accountable Workout
 
-This project analyzes workout videos, counts **good reps** and **bad reps**, and provides feedback on why a rep was considered bad.  
-Built with **Python (backend)** and designed to scale into an **iOS app**.
+**Accountable Workout** is a mobile application that helps gym-goers improve exercise form by analyzing recorded workout videos and identifying **bad reps** (e.g. incomplete range of motion, asymmetry, poor depth).
+
+Unlike generic fitness apps, SmartForm focuses on **objective, explainable feedback** using pose estimation and biomechanical rules — not vague “AI scores”.
 
 ---
 
-## 🚀 Features
-- 📹 Upload a workout video
-- 🤖 Pose detection using **Mediapipe**
-- 🔢 Rep counting (good ✅ vs bad ❌)
-- 📋 Feedback on incorrect form
-- 📊 Store and track progress (future phase)
-- 📱 Planned iOS app integration
+## 🚨 Problem
+
+Most beginners (and many intermediates) perform exercises with poor form due to:
+- Lack of coaching
+- No immediate feedback
+- No objective way to review reps
+
+Bad form leads to:
+- Slower progress
+- Increased injury risk
+- Reinforcing incorrect movement patterns
+
+---
+
+## ✅ Solution
+
+SmartForm allows users to:
+1. Record workout videos
+2. Automatically detect reps
+3. Classify reps as good or bad
+4. Explain *why* a rep is bad
+5. Track workouts and estimated calorie burn
+
+Feedback is generated using **pose estimation + rule-based biomechanics**, ensuring transparency and debuggability.
+
+---
+
+## 🧠 System Architecture
+```
+React Native App
+│
+├── Video recording & playback
+├── Workout tracking UI
+├── Rep feedback visualization
+│
+└── REST API
+↓
+Python Backend (FastAPI)
+│
+├── Authentication
+├── Workout CRUD
+├── Video upload & storage
+├── Pose estimation pipeline
+├── Rep detection
+├── Form analysis
+└── Results persistence
+```
 
 ---
 
 ## 🛠 Tech Stack
-### Backend
-- [Python](https://www.python.org/)  
-- [OpenCV](https://opencv.org/) – video processing  
-- [Mediapipe](https://developers.google.com/mediapipe) – pose estimation  
-- [FastAPI](https://fastapi.tiangolo.com/) – API layer  
-- [NumPy](https://numpy.org/) / [Pandas](https://pandas.pydata.org/) – data handling  
-- [scikit-learn](https://scikit-learn.org/) / [PyTorch](https://pytorch.org/) – ML model (later phase)  
 
-### Frontend
-- **Phase 1:** Simple web test client  
-- **Phase 2:** iOS app (Swift/SwiftUI or React Native)  
-
-### Database (future)
-- PostgreSQL / Firebase (to store workout history)
+### Frontend (Mobile)
+- **React Native (Expo)**
+- **TypeScript**
+- `expo-camera`, `expo-av`
+- **TanStack Query**
+- **Axios**
+- Minimal UI-first design (function > aesthetics)
 
 ---
 
-## 📂 Project Structure (planned)
+### Backend
+- **Python**
+- **FastAPI**
+- **Uvicorn**
+- **PostgreSQL**
+- **SQLAlchemy / SQLModel**
+- **AWS S3** (video storage)
+
+---
+
+### Computer Vision & Analysis
+- **MediaPipe Pose**
+- **NumPy**
+- **OpenCV**
+- **Pandas**
+- **scikit-learn** (future classification layer)
+
+---
+
+This repo demonstrates:
+- Applied computer vision
+- ML system design thinking
+- Backend + mobile integration
+- Engineering tradeoff awareness
